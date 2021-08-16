@@ -1,28 +1,31 @@
 const lighthouse = require("lighthouse");
-const chromeLauncher = require("chrome-launcher");
+const puppeteer = require("puppeteer");
 const express = require("express");
 const app = express();
 
-const launchChromeAndRunLighthouse = async (url) => {
-  const chrome = await chromeLauncher.launch({ chromeFlags: ["--headless"] });
+const launchBrowserAndRunLighthouse = async (url) => {
+  const browser = await puppeteer.launch({
+    headless: true,
+    args: ["--no-sandbox"],
+  });
   const options = {
     logLevel: "info",
     output: "html",
     onlyCategories: ["performance", "accessibility", "best-practices", "seo"],
-    port: chrome.port,
+    port: new URL(browser.wsEndpoint()).port,
   };
 
   const runnerResult = await lighthouse(url, options);
   const reportHtml = runnerResult.report;
 
-  await chrome.kill();
+  await browser.close();
 
   return reportHtml;
 };
 
 app.get("/", async (req, res) => {
   try {
-    const results = await launchChromeAndRunLighthouse(
+    const results = await launchBrowserAndRunLighthouse(
       "https://debradwinans.com/"
     );
 
