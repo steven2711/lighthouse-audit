@@ -21,11 +21,15 @@ const launchChromeAndRunLighthouse = async (url) => {
 };
 
 app.get("/", async (req, res) => {
-  const results = await launchChromeAndRunLighthouse(
-    "https://debradwinans.com/"
-  );
+  try {
+    const results = await launchChromeAndRunLighthouse(
+      "https://debradwinans.com/"
+    );
 
-  res.send(results);
+    res.send(results);
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 const PORT = process.env.PORT || 5000;
