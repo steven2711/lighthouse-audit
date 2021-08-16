@@ -23,19 +23,19 @@ const launchBrowserAndRunLighthouse = async (url) => {
   return reportHtml;
 };
 
-app.get("/", async (req, res) => {
+app.get("/:url", async (req, res) => {
+  let url = req.params.url;
+
+  let fixedUrl = "https://" + url;
+
   try {
-    const results = await launchBrowserAndRunLighthouse(
-      "https://debradwinans.com/"
-    );
+    const results = await launchBrowserAndRunLighthouse(fixedUrl);
 
     res.send(results);
   } catch (error) {
     console.log(error);
   }
 });
-
-// test
 
 const PORT = process.env.PORT || 5000;
 
