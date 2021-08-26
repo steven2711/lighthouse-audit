@@ -10,6 +10,7 @@ app.use(
       "http://localhost:3000",
       "https://cyber-dojo.vercel.app",
       "https://cyberdojo.co",
+      "https://www.cyberdojo.co",
     ],
   })
 );
