@@ -2,14 +2,17 @@ const lighthouse = require("lighthouse");
 const puppeteer = require("puppeteer");
 const cors = require("cors");
 const express = require("express");
+const dns = require("dns");
 const app = express();
+
+app.use(express.json());
 
 app.use(
   cors({
     origin: [
-      "http://localhost:3000/",
-      "https://cyber-dojo.vercel.app/",
-      "https://cyberdojo.co/",
+      "http://localhost:3000",
+      "https://cyber-dojo.vercel.app",
+      "https://cyberdojo.co",
       "https://www.cyberdojo.co",
     ],
   })
@@ -35,18 +38,40 @@ const launchBrowserAndRunLighthouse = async (url) => {
   return reportHtml;
 };
 
-app.get("/:url", async (req, res) => {
-  let url = req.params.url;
+app.get("/", async (req, res) => {
+  res.status(200).json({ msg: "it works" });
+});
 
-  let fixedUrl = "https://" + url;
+app.post("/test", (req, res) => {
+  const { url } = req.body;
 
-  try {
-    const results = await launchBrowserAndRunLighthouse(fixedUrl);
+  function checkDomainAndTest(url, res) {
+    dns.lookup(url, (err, address, family) => {
+      if (!address) {
+        return res
+          .status(404)
+          .json({ success: false, msg: "Domain entered does not exist" });
+      }
 
-    res.send(results);
-  } catch (error) {
-    console.log(error);
+      async function runLighthouse(url, res) {
+        let fixedUrl = "https://" + url;
+        try {
+          const results = await launchBrowserAndRunLighthouse(fixedUrl);
+          return res.status(200).send(results);
+        } catch (error) {
+          console.log(error);
+          return res.status(500).json({
+            success: false,
+            msg: "Oops... looks like an error on our end. Try again later.",
+          });
+        }
+      }
+
+      runLighthouse(url, res);
+    });
   }
+
+  checkDomainAndTest(url, res);
 });
 
 const PORT = process.env.PORT || 5000;
