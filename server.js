@@ -7,14 +7,10 @@ const app = express();
 
 app.use(express.json());
 
+// add your safe domains here
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-      "https://cyber-dojo.vercel.app",
-      "https://cyberdojo.co",
-      "https://www.cyberdojo.co",
-    ],
+    origin: [],
   })
 );
 
