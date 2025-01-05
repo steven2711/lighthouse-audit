@@ -1,5 +1,4 @@
-# Lighthouse Audit API 🏗️
-
+# Lighthouse Audit API 🔦
 This project provides an API for running Google Lighthouse audits on web pages.
 
 ## Description 📝
