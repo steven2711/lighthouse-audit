@@ -56,7 +56,7 @@ Send a GET request to `/` to verify the server is running. It should respond wit
 
 The following parameters can be configured in the `server.js` file:
 
-🔌 `PORT` - The port the server runs on (default: 5000) 
+🔌 `PORT` - The port the server runs on (default: 5000) <br>
 🌐 `cors` - The allowed origins for CORS
 
 ## Contribution 🤝
@@ -75,7 +75,7 @@ Currently, no automated tests are set up for this project. This would be a great
 
 This project makes use of the following open source packages:
 
-🚀 [Express](https://expressjs.com/)
-💡 [Google Lighthouse](https://developers.google.com/web/tools/lighthouse) 
-🎭 [Puppeteer](https://pptr.dev/)
-🌍 [cors](https://github.com/expressjs/cors#readme)
+🚀 [Express](https://expressjs.com/) <br>
+💡 [Google Lighthouse](https://developers.google.com/web/tools/lighthouse) <br>
+🎭 [Puppeteer](https://pptr.dev/) <br>
+🌍 [cors](https://github.com/expressjs/cors#readme) <br>
