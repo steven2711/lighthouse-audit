@@ -8,11 +8,7 @@ The Lighthouse Audit API allows clients to submit a URL and receive a Lighthouse
 ## Features ✨
 
 🌐 Runs Lighthouse audits on provided URLs
-🔍 Checks if the submitted domain exists before attempting to run audit
 📊 Returns the Lighthouse report as an HTML string in the response
-🚀 Runs audits for the Performance, Accessibility, Best Practices, and SEO categories
-🌍 Supports CORS for allowed origins
-✅ Validates the provided URL and returns appropriate error responses
 
 ## Installation 🛠️
 
