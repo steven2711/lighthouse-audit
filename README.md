@@ -7,7 +7,7 @@ The Lighthouse Audit API allows clients to submit a URL and receive a Lighthouse
 
 ## Features ✨
 
-🌐 Runs Lighthouse audits on provided URLs 
+🌐 Runs Lighthouse audits on provided URLs <br>
 📊 Returns the Lighthouse report as an HTML string in the response
 
 ## Installation 🛠️
