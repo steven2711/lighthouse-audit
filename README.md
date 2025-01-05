@@ -7,7 +7,7 @@ The Lighthouse Audit API allows clients to submit a URL and receive a Lighthouse
 
 ## Features ✨
 
-🌐 Runs Lighthouse audits on provided URLs
+🌐 Runs Lighthouse audits on provided URLs 
 📊 Returns the Lighthouse report as an HTML string in the response
 
 ## Installation 🛠️
@@ -56,7 +56,7 @@ Send a GET request to `/` to verify the server is running. It should respond wit
 
 The following parameters can be configured in the `server.js` file:
 
-🔌 `PORT` - The port the server runs on (default: 5000)
+🔌 `PORT` - The port the server runs on (default: 5000) 
 🌐 `cors` - The allowed origins for CORS
 
 ## Contribution 🤝
